@@ -1,0 +1,178 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+    <ion-title>TOD Billing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+
+    <div id="d-container">
+
+      <ion-list class="rounded">
+        <ion-list-header color ="primary">
+          <ion-label color="light">
+            Enter the connection details
+          </ion-label>
+        </ion-list-header>
+
+        <ion-item class="rounded">
+          <ion-label>Tariff</ion-label>
+          <ion-select interface="popover" [(ngModel)]="selected_tariff" (ionChange)="onChange($event)" [ngModelOptions]="{standalone: true}" placeholder="Select One">
+            <ion-select-option value="LT-IVA">LT-IVA</ion-select-option>
+            <ion-select-option value="LT-IVB">LT-IVB</ion-select-option>
+
+          </ion-select>
+        </ion-item>
+
+        <ion-list-header >
+          <ion-label color="primary">
+            {{tariffDesc}}
+          </ion-label>
+        </ion-list-header>
+
+
+        <ion-radio-group class="rounded" [(ngModel)]="phaseValue" (ionSelect)="showValue()">
+
+          <ion-list-header  color="primary">
+            <ion-label color="light">
+              Select Phase
+            </ion-label>
+          </ion-list-header>
+
+          <ion-item class="rounded">
+            <ion-label>Three Phase</ion-label>
+            <ion-radio slot="end" value="3ph"></ion-radio>
+          </ion-item>
+
+          <ion-item class="rounded">
+            <ion-label>Three Phase with -CT</ion-label>
+            <ion-radio slot="end" value="3ct"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+
+        <ion-item class="hidden" [disabled]=surhidden (ionChange)="surchonChange($event)">
+          <ion-label>include Fuel Surcharge</ion-label>
+          <ion-toggle slot="start" [(ngModel)]="fsstate" [checked]="fsstate" [disabled]=false></ion-toggle>
+        </ion-item>
+
+        <ion-item class="hidden" [disabled]=survaluehidden id="rounded">
+          <ion-label>Rate of F/S Ps/Unit </ion-label>
+          <ion-input type="number" [(ngModel)]="surchRate" [disabled]=false value={{surchRate}}></ion-input>
+        </ion-item>
+
+
+
+      </ion-list>
+
+      <ion-list-header class="rounded" color="primary">
+        <ion-label color="light">
+          Recorded Maximum Demand-KVA
+        </ion-label>
+      </ion-list-header>
+
+
+      <ion-item class="rounded">
+        <ion-label>RMD1-Norm(6AM-6PM)</ion-label>
+        <ion-input type="number" [(ngModel)]="rmd1" placeholder="KW" ></ion-input>
+      </ion-item>
+
+      <ion-item class="rounded">
+        <ion-label>RMD2-Pk (6PM-10PM)</ion-label>
+        <ion-input type="number" [(ngModel)]="rmd2" placeholder="KW" ></ion-input>
+      </ion-item>
+
+      <ion-item class="rounded">
+        <ion-label>RMD3-O-Pk (10PM-6AM)</ion-label>
+        <ion-input type="number" [(ngModel)]="rmd3" placeholder="KW" ></ion-input>
+      </ion-item>
+
+      <ion-list-header class="rounded" color="primary">
+        <ion-label color="light">
+          Units Consumed - KWH
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item class="rounded">
+        <ion-label>KWH1-Norm(6AM-6PM)</ion-label>
+        <ion-input type="number" [(ngModel)]="kwh1" placeholder="KWH" ></ion-input>
+      </ion-item>
+
+      <ion-item class="rounded">
+        <ion-label>KWH2-Pk(6PM-10PM)</ion-label>
+        <ion-input type="number" [(ngModel)]="kwh2" placeholder="KWH" ></ion-input>
+      </ion-item>
+
+      <ion-item class="rounded">
+        <ion-label>KWH3-O-Pk(10PM-6AM)</ion-label>
+        <ion-input type="number" [(ngModel)]="kwh3" placeholder="KWH" ></ion-input>
+      </ion-item>
+
+      <ion-list-header class="rounded" color="primary">
+        <ion-label color="light">
+          KVAH Cummulative
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item class="rounded">
+        <ion-label>KVAH-Cummulative</ion-label>
+        <ion-input type="number" [(ngModel)]="kvah" placeholder="KVAH" ></ion-input>
+      </ion-item>
+
+      <ion-list-header class="rounded" color="primary">
+        <ion-label color="light">
+          KVARH LEAD
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item class="rounded">
+        <ion-label>KVARH - LEAD</ion-label>
+        <ion-input type="number" [(ngModel)]="kvarhld" placeholder="KVARH" ></ion-input>
+      </ion-item>
+
+      <ion-list-header class="rounded" color="primary">
+        <ion-label color="light">
+          KVARH LAG
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item class="rounded">
+        <ion-label>KVARH - LAG</ion-label>
+        <ion-input type="number" [(ngModel)]="kvarhlg" placeholder="KVARH" ></ion-input>
+      </ion-item>
+
+      <ion-list-header class="rounded" color="primary">
+        <ion-label color="light">
+          Connected Load-KW
+        </ion-label>
+      </ion-list-header>
+
+
+      <ion-item class="rounded">
+        <ion-label>Connected Load</ion-label>
+        <ion-input type="number" [(ngModel)]="cl" placeholder="KW" ></ion-input>
+      </ion-item>
+
+
+      <ion-list-header class="rounded"  color="primary">
+        <ion-label color="light">
+          Cntract Demand-KW
+        </ion-label>
+      </ion-list-header>
+
+
+      <ion-item class="rounded">
+        <ion-label>Contract Demand(KW)</ion-label>
+        <ion-input type="number" [(ngModel)]="cd" placeholder="KW" ></ion-input>
+      </ion-item>
+
+      <ion-button class="center" (click)="openModal()">View Bill</ion-button>
+
+  </div>
+</ion-content>

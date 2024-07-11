@@ -1,0 +1,179 @@
+<!-- home.page.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+        <ion-buttons slot="primary">
+          <ion-button color="danger" (click)='exitApp()'>
+            <ion-icon slot="icon-only" name="exit"></ion-icon>
+
+          </ion-button>
+        </ion-buttons>
+
+    <ion-title>
+
+    Home-Electricity Bill Normal
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+
+    <div id="d-container">
+
+      <ion-list class="listarrange">
+        <ion-list-header color ="primary">
+          <ion-label color="light">
+            Enter the connection details
+          </ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Tariff</ion-label>
+          <ion-select interface="popover" [(ngModel)]="selected_tariff" (ionChange)="onChange($event)" [ngModelOptions]="{standalone: true}" placeholder="Select One">
+            <ion-select-option value="LT-I">LT-I</ion-select-option>
+<!--           <ion-select-option value="LT-II">LT-II</ion-select-option>  -->
+<!--            <ion-select-option value="LT-IIIA">LT-III(A)</ion-select-option> -->
+<!--            <ion-select-option value="LT-IIIB">LT-III(B)</ion-select-option>  -->
+            <ion-select-option value="LT-IVA">LT-IV(A)</ion-select-option>
+            <ion-select-option value="LT-IVB">LT-IV(B)</ion-select-option>
+            <ion-select-option value="LT-VA">LT-V(A)</ion-select-option>
+            <ion-select-option value="LT-VB">LT-V(B)</ion-select-option>
+            <ion-select-option value="LT-VIA">LT-VI(A)</ion-select-option>
+            <ion-select-option value="LT-VIB">LT-VI(B)</ion-select-option>
+            <ion-select-option value="LT-VIC">LT-VI(C)</ion-select-option>
+            <ion-select-option value="LT-VID">LT-VI(D)</ion-select-option>
+
+            <ion-select-option value="LT-VIE">LT-VI(E)</ion-select-option>
+            <ion-select-option value="LT-VIF">LT-VI(F)</ion-select-option>
+            <ion-select-option value="LT-VIG">LT-VI(G)</ion-select-option>
+            <ion-select-option value="LT-VIIA">LT-VII(A)</ion-select-option>
+            <ion-select-option value="LT-VIIB">LT-VII(B)</ion-select-option>
+            <ion-select-option value="LT-VIIC">LT-VII(C)</ion-select-option>
+            <ion-select-option value="LT-VIIIB">LT-VIII(B)</ion-select-option>
+            <ion-select-option value="LT-IX">LT-IX</ion-select-option>
+            <ion-select-option value="LT-X">LT-X</ion-select-option>
+
+
+
+          </ion-select>
+        </ion-item>
+
+        <ion-list-header >
+          <ion-label color="primary">
+            {{tariffDesc}}
+          </ion-label>
+        </ion-list-header>
+
+
+
+
+
+        <ion-radio-group [(ngModel)]="phaseValue" (ionSelect)="showValue()">
+
+          <ion-list-header  color="primary">
+            <ion-label color="light">
+              Select Phase
+            </ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>Single Phase</ion-label>
+            <ion-radio slot="end" value="1ph"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Three Phase</ion-label>
+            <ion-radio slot="end" value="3ph"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Three Phase with -CT</ion-label>
+            <ion-radio slot="end" value="3ct"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+
+        <ion-radio-group [(ngModel)]="billingFrequency" (ionSelect)="showValue()">
+
+          <ion-list-header color="primary">
+            <ion-label color="light">
+              Select Billing Frequency
+            </ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>Monthly</ion-label>
+            <ion-radio slot="end" value="1m" ></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Bi-Monthly</ion-label>
+            <ion-radio slot="end" value="2m" ></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+
+
+
+        <ion-item  class="hidden" [disabled]=bplhidden (ionChange)="bplChange($event)">
+          <ion-label>Check this for BPL</ion-label>
+          <ion-toggle slot="start" [(ngModel)]="bplstate" [checked]="bplstate" [disabled]="!enabled"></ion-toggle>
+        </ion-item>
+
+
+        <ion-item class="hidden" [disabled]=surhidden (ionChange)="surchonChange($event)">
+          <ion-label>include Fuel Surcharge</ion-label>
+          <ion-toggle slot="start" [(ngModel)]="fsstate" [checked]="fsstate" [disabled]="!enabled"></ion-toggle>
+        </ion-item>
+
+        <ion-item class="hidden" [disabled]=survaluehidden id="rounded">
+          <ion-label>Rate of F/S Ps/Unit </ion-label>
+          <ion-input type="number" [(ngModel)]="surchRate" [disabled]="!enabled" value={{surchRate}}></ion-input>
+        </ion-item>
+
+
+
+      </ion-list>
+
+
+      <ion-list-header color="primary">
+        <ion-label color="light">
+          Unit Consumed - KWH
+        </ion-label>
+      </ion-list-header>
+
+      <ion-item id="rounded">
+        <ion-label>Unit Consumed</ion-label>
+        <ion-input type="number" [(ngModel)]="kwh" placeholder="KWH" ></ion-input>
+      </ion-item>
+
+      <ion-list-header color="primary">
+        <ion-label color="light">
+          Connected Load - KW
+        </ion-label>
+      </ion-list-header>
+
+
+      <ion-item [disabled]=clhidden id="rounded">
+        <ion-label>Connected Load</ion-label>
+        <ion-input type="number" [(ngModel)]="cl" placeholder="KW" ></ion-input>
+      </ion-item>
+
+      <ion-item class="hidden" [disabled]=dayshidden id="rounded">
+        <ion-label>Number of Days </ion-label>
+        <ion-input type="number" [(ngModel)]="noDays" placeholder=0 ></ion-input>
+      </ion-item>
+
+
+
+      <ion-button class="center" (click)="openModal()">View Bill</ion-button>
+
+
+  </div>
+
+
+</ion-content>

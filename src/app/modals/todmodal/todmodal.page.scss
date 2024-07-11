@@ -1,0 +1,50 @@
+.summary_row{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.summary_row:first-child {
+  font-weight: bold;
+  text-align: center;
+  background-color: lighten($color: #78c9e9, $amount: 0);
+
+}
+.summary_row:last-of-type{
+  font-weight: bold;
+  text-align: center;
+  background-color: lighten($color: #78c9e9, $amount: 0);
+}
+
+.summarycell{
+  overflow: auto;
+  word-wrap: break-word;
+  width: 35%;
+  border: 1px solid #2c0bbe;
+  padding: 5px;
+  text-align: right;
+}
+
+.summarycell1{
+  width:65%;
+  text-align: left;
+  border: 1px solid #2c0bbe;
+  padding: 5px;
+  text-align: left;
+}
+
+.center{
+  margin-left: 25%;
+  margin-right: 25%;
+  display: block !important;
+}
+.headrow{
+  font-weight: bold;;
+  font-size:x-small;
+  padding: 10px;
+  text-align: left;
+  background-color: lighten($color: #78c9e9, $amount: 0);
+
+}
+
+
+

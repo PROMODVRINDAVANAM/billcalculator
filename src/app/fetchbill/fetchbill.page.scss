@@ -1,0 +1,36 @@
+
+.webPage{
+  width: 100%;
+  height: 100%;
+  border: none;
+  }
+
+  .imgbutton{
+        text-align: left;
+        align-items: flex-start;
+        vertical-align: middle;
+        margin-left: 0px;
+
+    }
+    .round {
+        width: 100%;
+        height: 70px;
+        vertical-align: middle;
+
+        overflow-wrap: break-word;
+        --border-radius: 0%;
+        --vertical-align: middle;
+        --padding-start: 0px;
+        --padding-end: 0px;
+      }
+
+
+    .spn{
+          margin-right: auto;
+          vertical-align: middle;
+
+        }
+
+
+
+

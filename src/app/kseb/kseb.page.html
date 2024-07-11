@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+    <ion-title>KSEB in Touch</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+
+  <ion-grid >
+    <ion-row>
+      <ion-col>
+        <div class="ksebbutton">
+          <ion-button slot="center"  class="round"  (click)="openpaybill()"><span class="spn">
+            <img class="imgbutton" height="70px" width="70px" src="assets/icon/credit-card.png">
+            Quick Pay</span></ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <div class="ksebbutton">
+          <ion-button slot="center"  class="round"  (click)="openksebnc()" ><span class="spn">
+            <img class="imgbutton" height="70px" width="70px"src="assets/icon/idea.png">
+            New Connection</span> </ion-button>
+
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <div class="ksebbutton">
+          <ion-button slot="center"  class="round"  (click)="openrc()" >
+            <img class="imgbutton" height="70px" width="70px"src="assets/icon/chk-status.png"><span class="spn">
+              Register Complaint</span></ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+     <ion-col>
+        <div class="ksebbutton">
+          <ion-button slot="center"  class="round"  (click)="opencs()" >
+            <img class="imgbutton" height="70px" width="70px"src="assets/icon/chk-status.png"><span class="spn">
+              Complaint Status</span> </ion-button>
+
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+         <div class="ksebbutton">
+           <ion-button slot="center"  class="round"  (click)="openOmsreg()" >
+             <img class="imgbutton" height="70px" width="70px"src="assets/icon/smartphone.png"><span class="spn">
+               Bill Alert Phone/Email Regn.</span> </ion-button>
+
+         </div>
+       </ion-col>
+     </ion-row>
+
+     <ion-row>
+      <ion-col>
+         <div class="ksebbutton">
+           <ion-button slot="center"  class="round"  (click)="openSoura()" >
+             <img class="imgbutton" height="70px" width="70px"src="assets/icon/solar-panel.png"><span class="spn">
+               Solar Ongrid-SOURA</span> </ion-button>
+
+         </div>
+       </ion-col>
+     </ion-row>
+
+
+
+
+  </ion-grid>

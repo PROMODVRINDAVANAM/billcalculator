@@ -1,0 +1,42 @@
+<ion-app>
+  <ion-menu class="sidemenu" side="start" menuId="first" contentId="content1">
+
+
+      <ion-header>
+
+        <ion-toolbar class="toolbar" color="primary" >
+
+          <ion-title>Electricity Bill Calculator</ion-title>
+
+
+          <div><img class="image" src="assets/img/icon.png" alt="" height="100" width="100"  style="vertical-align:middle;margin:0px 80px"></div>
+
+          <div >
+            <ion-title class="header2">By promodvrindavanam</ion-title>
+
+          </div>
+
+
+        </ion-toolbar>
+
+      </ion-header>
+
+
+
+      <ion-content>
+        <ion-list *ngFor="let pages of navigate">
+        <ion-menu-toggle auto-hide="true">
+          <ion-item [routerLink]="pages.url" routerDirection="forward">
+              <ion-icon color="primary" [name]="pages.icon" slot="start"></ion-icon>
+                 {{pages.title}}
+          </ion-item>
+        </ion-menu-toggle>
+        </ion-list>
+
+
+
+
+      </ion-content>
+    </ion-menu>
+<ion-router-outlet id="content1"></ion-router-outlet>
+</ion-app>

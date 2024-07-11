@@ -1,0 +1,161 @@
+<!-- my-modal.page.html -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Your-Electricity Bill</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="headrow">
+  <div>
+    Tariff / Purpose = {{tariffDesc}}
+  </div>
+  <div>
+    Connected Load(KW) = {{cl}} kw
+  </div>
+  <div>
+    Unit  Consumed(KWH) = {{consum}} Units
+  </div>
+</div>
+
+
+<ion-content class="ion-padding">
+
+
+    <div class='summary_row'>
+          <div  class='summarycell1' >Particulars</div>
+          <div  class='summarycell'>Rs.</div>
+
+        </div>
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Fixed Charges
+          </div>
+          <div  class='summarycell'>
+            {{fc}}
+          </div>
+        </div>
+        <div  class='summary_row'>
+          <div class='summarycell1' >
+            FC Subsidy(-)
+          </div>
+          <div  class='summarycell'>
+            {{fcsub}}
+          </div>
+        </div>
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Energy Charges
+          </div>
+          <div  class='summarycell'>
+            {{ec}}
+
+          </div>
+        </div>
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Energy Subsidy(-)
+          </div>
+          <div  class='summarycell'>
+            {{ecsub}}
+          </div>
+        </div>
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            EC with Subsidy
+          </div>
+          <div  class='summarycell'>
+            {{ecwithsub}}
+
+          </div>
+        </div>
+
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Duty
+          </div>
+          <div  class='summarycell'>
+            {{duty}}
+
+          </div>
+        </div>
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Meter Rent
+          </div>
+          <div  class='summarycell'>
+            {{meterrent}}
+
+          </div>
+        </div>
+
+<!--        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Meter Rent Flood Cess
+          </div>
+          <div  class='summarycell'>
+            {{mrfloodcess}}
+          </div>
+        </div> -->
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Meter Rent SCGST
+          </div>
+          <div  class='summarycell'>
+            {{mrsgst}}
+
+          </div>
+        </div>
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Meter Rent CGST
+          </div>
+          <div  class='summarycell'>
+            {{mrcgst}}
+
+          </div>
+        </div>
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+           Fuel Surcharge on Energy
+          </div>
+          <div  class='summarycell'>
+            {{fusur}}
+          </div>
+        </div>
+
+
+        <div  class='summary_row'>
+          <div  class='summarycell1'>
+            Grand Total
+          </div>
+          <div  class='summarycell'>
+            {{grandtotal}}
+
+          </div>
+        </div>
+
+
+
+  <ion-grid>
+
+    <div >
+     Method of Culculation:: {{calcMethod}}
+    </div>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-button  class="center" (click)="closeModal()">Back</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
